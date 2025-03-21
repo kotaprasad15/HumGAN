@@ -22,7 +22,7 @@ transform = transforms.Compose([
     transforms.Normalize([0.5, 0.5, 0.5], [0.5, 0.5, 0.5])
 ])
 
-class HumanDataset(Dataset):
+class HumanDataset(Dataset):#loading datasets and preproccessing
     def __init__(self, images_path, transform=None):
         self.images = []
         self.transform = transform
@@ -72,7 +72,7 @@ class HumanDataset(Dataset):
 dataset = HumanDataset(samples_path, transform=transform)
 dataloader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=0)
 
-class Generator(nn.Module):
+class Generator(nn.Module):#Generator Architecture
     def __init__(self, latent_dim=100, ngf=64):
         super(Generator, self).__init__()
         self.model = nn.Sequential(
@@ -95,7 +95,7 @@ class Generator(nn.Module):
     def forward(self, z):
         return self.model(z)
         
-class Discriminator(nn.Module):
+class Discriminator(nn.Module):#Discriminator Architecture
     def __init__(self, ndf=64):
         super(Discriminator, self).__init__()
         self.model = nn.Sequential(
